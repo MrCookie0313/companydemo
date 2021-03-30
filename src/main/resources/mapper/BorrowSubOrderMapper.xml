@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.BorrowSubOrderDao">
+
+    <select id="findCompanys" parameterType="map" resultType="com.example.model.CompanyVos">
+
+        select sc.company_id AS "companyId" , sc.company_name as "companyName"
+        from SJK_COMPANY sc
+<!--        inner  join SJK_USER_CATALOG uc on sc.tree_node_id = uc.tree_node_id-->
+<!--        where sc.is_del=1 and uc.is_del=1 and uc.type=1-->
+<!--        <if test="userId!=null and userId!=''  ">-->
+<!--            and uc.user_id=#{userId}-->
+<!--        </if>-->
+
+    </select>
+
+
+    <select id="findAllDepts" parameterType="map" resultType="com.example.model.DeptVos">
+        select pd.dept_id as "deptId",pd.dept_name as "deptName" ,pd.fdept_id as "fDeptId" , sc.company_id as "companyId"
+		from PT_DEPT    pd
+		inner join SJK_COMPANY sc on pd.company_id=sc.company_id
+		where  1=1
+		 and  pd.fdept_id=#{fDeptId}  and pd.company_id=#{companyId}
+
+    </select>
+</mapper>
