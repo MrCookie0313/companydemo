@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.model.CompanyVos;
 import com.example.service.BorrowSubOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +24,6 @@ public class BorrowController {
 
     @RequestMapping(value = "/findCompany",method = RequestMethod.GET)
     public List findCompanyAndDepts() {
-
         Map<String, Object> paramMap = new HashMap<String, Object>();
         List<CompanyVos> list = borrowSubOrderService.findCompanyAndDepts(paramMap);
         return list;
